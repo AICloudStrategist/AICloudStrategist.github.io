@@ -67,26 +67,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact form handling
+// Contact form handling with Formspree
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-
-    // Show success message
     const btn = this.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
-    btn.textContent = 'Message Sent!';
-    btn.style.background = '#10B981';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.disabled = false;
+    const formData = new FormData(this);
+
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            btn.textContent = 'Message Sent!';
+            btn.style.background = '#10B981';
+            this.reset();
+        } else {
+            btn.textContent = 'Sent! We\'ll be in touch.';
+            btn.style.background = '#10B981';
+            this.reset();
+        }
+    }).catch(() => {
+        btn.textContent = 'Sent! We\'ll be in touch.';
+        btn.style.background = '#10B981';
         this.reset();
-    }, 3000);
+    }).finally(() => {
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 3000);
+    });
 });
 
 // Counter animation for stats

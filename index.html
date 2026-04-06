@@ -453,27 +453,27 @@
                             <span class="contact-icon">&#128205;</span>
                             <div>
                                 <strong>Office</strong>
-                                <span>Delhi/NCR, India</span>
+                                <span>Noida City Center, Noida Uttar Pradesh - 201306, India</span>
                             </div>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">&#9993;</span>
                             <div>
                                 <strong>Email</strong>
-                                <span>hello@aicloudstrategist.com</span>
+                                <span>contact@aicloudstretegist.com</span>
                             </div>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">&#128222;</span>
                             <div>
                                 <strong>Phone</strong>
-                                <span>+91-XXXXXXXXXX</span>
+                                <span>1-800-AICLOUD (1-800-242-5683)</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xcontact" method="POST">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
@@ -556,6 +556,33 @@
         </div>
     </footer>
 
+    <!-- Chatbot Widget -->
+    <div class="chatbot-toggle" id="chatbotToggle" title="Chat with us">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <span>AICloud Assistant</span>
+            <button class="chatbot-close" id="chatbotClose">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chat-msg bot">
+                <p>Hi! Welcome to AICloud Strategist. I can help answer questions about our cloud consulting services. To get started, could I get your contact details?</p>
+            </div>
+        </div>
+        <div class="chatbot-lead-form" id="chatbotLeadForm">
+            <input type="text" id="chatLeadName" placeholder="Your name" required>
+            <input type="email" id="chatLeadEmail" placeholder="Your email" required>
+            <input type="tel" id="chatLeadPhone" placeholder="Phone (optional)">
+            <button class="btn btn-primary btn-sm" id="chatLeadSubmit">Start Chat</button>
+        </div>
+        <div class="chatbot-input" id="chatbotInput" style="display:none;">
+            <input type="text" id="chatInput" placeholder="Type your question...">
+            <button id="chatSend" class="btn btn-primary btn-sm">Send</button>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
 </body>
 </html>
