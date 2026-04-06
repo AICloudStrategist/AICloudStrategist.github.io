@@ -190,7 +190,7 @@
     }
 
     function submitLeadToFormspree(lead) {
-        fetch('https://formspree.io/f/xcontact', {
+        fetch('https://formspree.io/f/mjgpjpbe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
