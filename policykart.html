@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolicyKart | DPDP Readiness Assessment</title>
+  <meta name="description" content="PolicyKart is a lightweight DPDP readiness assessment for Indian digital businesses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="assessment-page">
+  <header class="navbar scrolled">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="AICloudStrategist home">
+        <img src="assets/brand/aics-logo.svg" alt="" class="brand-mark">
+        <span class="brand-name">AICloudStrategist</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#offer">Offer</a>
+        <a href="index.html#evidence">Evidence Pack</a>
+        <a href="policykart.html">PolicyKart</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="btn btn-primary nav-cta">Book Review</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="assessment-hero">
+      <div class="container assessment-hero-inner">
+        <div>
+          <span class="section-tag">PolicyKart MVP</span>
+          <h1>DPDP readiness assessment for digital businesses</h1>
+          <p class="hero-sub">Answer a short set of operational questions and get a readiness band with practical next steps. This is a directional assessment, not legal advice or certification.</p>
+        </div>
+        <div class="assessment-summary">
+          <strong>Output</strong>
+          <span>Readiness band</span>
+          <span>Likely top gaps</span>
+          <span>Recommended next step</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container assessment-grid">
+        <form class="assessment-form" id="policykartForm">
+          <label>Company website<input type="url" name="website" placeholder="https://example.com"></label>
+          <label>Business email<input type="email" name="email" placeholder="name@company.com"></label>
+
+          <fieldset>
+            <legend>Data collection</legend>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="User accounts or profiles"> Users create accounts or profiles</label>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="Online payment data"> You collect online payments</label>
+            <label class="check-row"><input type="checkbox" data-score="3" data-gap="Sensitive data category"> You handle health, education, financial, identity, child/minor, employment, or location data</label>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="Multiple third-party tools"> You use analytics, CRM, support, payment, hosting, or marketing tools</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Operational readiness gaps</legend>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="Privacy policy needs review"> Privacy policy is missing or not clearly aligned to actual data use</label>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="Consent flow needs review"> Consent capture or withdrawal is unclear</label>
+            <label class="check-row"><input type="checkbox" data-score="3" data-gap="Rights request workflow missing"> Access, correction, deletion, or grievance workflow is missing or unclear</label>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="Vendor register missing"> Vendor / processor register is missing or incomplete</label>
+            <label class="check-row"><input type="checkbox" data-score="3" data-gap="Breach response workflow missing"> Breach or incident response workflow is missing or unclear</label>
+            <label class="check-row"><input type="checkbox" data-score="2" data-gap="External trust pressure"> Enterprise, investor, partner, or customer trust review is expected</label>
+          </fieldset>
+
+          <button type="submit" class="btn btn-primary btn-full">Calculate Readiness Band</button>
+        </form>
+
+        <aside class="result-panel" id="resultPanel">
+          <span class="section-tag">Assessment Result</span>
+          <h2 id="resultBand">Not calculated yet</h2>
+          <p id="resultMessage">Complete the assessment to see your directional readiness band and recommended next step.</p>
+          <div class="score-box"><strong id="scoreValue">0</strong><span>risk score</span></div>
+          <div>
+            <h3>Likely focus areas</h3>
+            <ul id="gapList">
+              <li>Assessment not completed.</li>
+            </ul>
+          </div>
+          <a href="index.html#contact" class="btn btn-primary btn-full">Request DPDP Starter Review</a>
+          <p class="disclaimer">PolicyKart provides directional operational-readiness guidance. It does not provide legal advice, legal certification, or statutory compliance confirmation.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/policykart.js"></script>
+</body>
+</html>

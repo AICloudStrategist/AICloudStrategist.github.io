@@ -38,13 +38,13 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Animate elements on scroll
-document.querySelectorAll('.service-card, .why-card, .industry-card, .testimonial-card, .process-step, .about-stat-card').forEach(el => {
+document.querySelectorAll('.offer-card, .evidence-item, .process-step, .mini-panel, .contact-card').forEach(el => {
     el.classList.add('animate-in');
     observer.observe(el);
 });
 
 // Stagger animation for grid items
-document.querySelectorAll('.services-grid, .why-grid, .industries-grid, .testimonial-grid').forEach(grid => {
+document.querySelectorAll('.offer-grid, .evidence-grid, .process-grid, .mini-grid').forEach(grid => {
     const cards = grid.querySelectorAll('.animate-in');
     cards.forEach((card, index) => {
         card.style.transitionDelay = `${index * 0.1}s`;
