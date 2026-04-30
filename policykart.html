@@ -11,19 +11,23 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="assessment-page">
-  <header class="navbar scrolled">
+  <header class="navbar scrolled" id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="brand" aria-label="AICloudStrategist home">
         <img src="assets/brand/aics-logo.svg" alt="" class="brand-mark">
         <span class="brand-name">AICloudStrategist</span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="index.html#offer">Offer</a>
         <a href="index.html#evidence">Evidence Pack</a>
         <a href="policykart.html">PolicyKart</a>
+        <a href="privacy.html">Privacy</a>
         <a href="index.html#contact">Contact</a>
       </nav>
       <a href="index.html#contact" class="btn btn-primary nav-cta">Book Review</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -49,6 +53,7 @@
         <form class="assessment-form" id="policykartForm">
           <label>Company website<input type="url" name="website" placeholder="https://example.com"></label>
           <label>Business email<input type="email" name="email" placeholder="name@company.com"></label>
+          <label class="check-row consent-row"><input type="checkbox" name="consent" value="yes" required> I agree that AICloudStrategist may use these details to calculate this assessment and respond to this request. See the <a href="privacy.html">Privacy Policy</a>.</label>
 
           <fieldset>
             <legend>Data collection</legend>
@@ -69,6 +74,7 @@
           </fieldset>
 
           <button type="submit" class="btn btn-primary btn-full">Calculate Readiness Band</button>
+          <p class="form-status" id="submitStatus" aria-live="polite"></p>
         </form>
 
         <aside class="result-panel" id="resultPanel">
@@ -89,6 +95,7 @@
     </section>
   </main>
 
+  <script src="js/main.js"></script>
   <script src="js/policykart.js"></script>
 </body>
 </html>

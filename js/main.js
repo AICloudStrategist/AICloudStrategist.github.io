@@ -1,17 +1,20 @@
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
 
 // Mobile menu toggle
 const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.getElementById('navLinks');
 
+if (mobileToggle && navLinks) {
 mobileToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
@@ -22,6 +25,7 @@ navLinks.querySelectorAll('a').forEach(link => {
         navLinks.classList.remove('active');
     });
 });
+}
 
 // Scroll animations
 const observerOptions = {
@@ -57,7 +61,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = navbar.offsetHeight;
+            const navHeight = navbar ? navbar.offsetHeight : 0;
             const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
             window.scrollTo({
                 top: targetPosition,
@@ -69,12 +73,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Contact form handling with Formspree
 const contactForm = document.getElementById('contactForm');
+if (contactForm) {
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = this.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
+    const status = this.querySelector('[data-form-status]');
     btn.textContent = 'Sending...';
     btn.disabled = true;
+    if (status) {
+        status.textContent = '';
+        status.className = 'form-status';
+    }
 
     const formData = new FormData(this);
 
@@ -86,16 +96,21 @@ contactForm.addEventListener('submit', function(e) {
         if (response.ok) {
             btn.textContent = 'Message Sent!';
             btn.style.background = '#10B981';
+            if (status) {
+                status.textContent = 'Thanks. Your request was sent successfully.';
+                status.classList.add('success');
+            }
             this.reset();
         } else {
-            btn.textContent = 'Sent! We\'ll be in touch.';
-            btn.style.background = '#10B981';
-            this.reset();
+            throw new Error('Form submission failed');
         }
-    }).catch(() => {
-        btn.textContent = 'Sent! We\'ll be in touch.';
-        btn.style.background = '#10B981';
-        this.reset();
+    }).catch((error) => {
+        btn.textContent = 'Try Again';
+        if (status) {
+            status.textContent = 'Sorry, the message did not send. Please email contact@aicloudstrategist.com directly.';
+            status.classList.add('error');
+        }
+        console.error(error);
     }).finally(() => {
         setTimeout(() => {
             btn.textContent = originalText;
@@ -104,6 +119,7 @@ contactForm.addEventListener('submit', function(e) {
         }, 3000);
     });
 });
+}
 
 // Counter animation for stats
 function animateCounters() {
