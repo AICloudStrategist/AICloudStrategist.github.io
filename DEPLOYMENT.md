@@ -36,6 +36,6 @@ Security settings enabled in Cloudflare:
 - TLS 1.3: on
 - HSTS: on for the apex hostname, without `includeSubDomains`
 - Static security headers: managed in `_headers`
-- Canonical redirect: `www` to apex, managed in `_redirects`
+- Canonical redirect: `www` to apex, enforced by Cloudflare Page Rule `*www.aicloudstrategist.com/* -> https://aicloudstrategist.com/$2`
 
 Do not re-add a root `CNAME` file for GitHub Pages. The custom domain belongs to Cloudflare Pages.
