@@ -1,0 +1,50 @@
+# Deployment
+
+## Source of Truth
+
+This repository is configured as the GitHub Pages source for the public AICloudStrategist website.
+
+- Repository: `support-aicloudstrategist/support-aicloudstrategist.github.io`
+- Publishing branch: `main`
+- Publishing path: `/`
+- GitHub Pages default URL: `https://support-aicloudstrategist.github.io/`
+- Intended custom domain: `https://aicloudstrategist.com/`
+
+Any committed change pushed to `main` is built by GitHub Pages automatically.
+
+## Current Custom Domain Status
+
+GitHub Pages is configured with the custom domain `aicloudstrategist.com`, and the root `CNAME` file contains:
+
+```text
+aicloudstrategist.com
+```
+
+The remaining step is DNS at Cloudflare. Until Cloudflare DNS points `aicloudstrategist.com` to GitHub Pages, the custom domain can continue serving the older Cloudflare-hosted site.
+
+## Required Cloudflare DNS Records
+
+For the apex domain, replace the current Cloudflare A/AAAA records with GitHub Pages records:
+
+```text
+Type  Name  Value
+A     @     185.199.108.153
+A     @     185.199.109.153
+A     @     185.199.110.153
+A     @     185.199.111.153
+AAAA  @     2606:50c0:8000::153
+AAAA  @     2606:50c0:8001::153
+AAAA  @     2606:50c0:8002::153
+AAAA  @     2606:50c0:8003::153
+```
+
+For `www`, add:
+
+```text
+Type   Name  Value
+CNAME  www   support-aicloudstrategist.github.io
+```
+
+After DNS propagates, return to GitHub repository settings and enable **Enforce HTTPS** if it is not enabled automatically.
+
+Reference: GitHub Pages custom domain documentation.
