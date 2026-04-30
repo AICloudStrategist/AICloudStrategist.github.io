@@ -20,11 +20,11 @@ GitHub Pages is configured with the custom domain `aicloudstrategist.com`, and t
 aicloudstrategist.com
 ```
 
-The remaining step is DNS at Cloudflare. Until Cloudflare DNS points `aicloudstrategist.com` to GitHub Pages, the custom domain can continue serving the older Cloudflare-hosted site.
+Cloudflare DNS was updated on April 30, 2026 to point `aicloudstrategist.com` and `www.aicloudstrategist.com` to GitHub Pages. Future pushed changes to `main` should publish through GitHub Pages.
 
 ## Required Cloudflare DNS Records
 
-For the apex domain, replace the current Cloudflare A/AAAA records with GitHub Pages records:
+For the apex domain, Cloudflare should keep these DNS-only GitHub Pages records:
 
 ```text
 Type  Name  Value
@@ -38,13 +38,13 @@ AAAA  @     2606:50c0:8002::153
 AAAA  @     2606:50c0:8003::153
 ```
 
-For `www`, add:
+For `www`, keep:
 
 ```text
 Type   Name  Value
 CNAME  www   support-aicloudstrategist.github.io
 ```
 
-After DNS propagates, return to GitHub repository settings and enable **Enforce HTTPS** if it is not enabled automatically.
+After DNS propagates, return to GitHub repository settings and enable **Enforce HTTPS** if it is not enabled automatically. GitHub may need time to issue the certificate after DNS is changed.
 
 Reference: GitHub Pages custom domain documentation.
