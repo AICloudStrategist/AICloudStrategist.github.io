@@ -11,6 +11,9 @@
 /papers/*
   X-Robots-Tag: noindex, nofollow
 
+/papers/state-of-cloud-cost-india-2026.pdf
+  X-Robots-Tag: noindex, nofollow
+
 /audit.html
   X-Robots-Tag: noindex, nofollow
 
