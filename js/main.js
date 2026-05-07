@@ -73,6 +73,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Contact form handling with Formspree
 const contactForm = document.getElementById('contactForm');
+function trackEvent(name, props = {}) {
+    if (window.plausible) {
+        window.plausible(name, { props });
+    }
+}
+
+document.querySelectorAll('a[href="#contact"], a[href="/#contact"]').forEach(link => {
+    link.addEventListener('click', () => trackEvent('Scoping CTA Click', {
+        page: window.location.pathname || '/',
+        label: link.textContent.trim()
+    }));
+});
+
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', () => trackEvent('Email CTA Click', {
+        page: window.location.pathname || '/',
+        email: link.getAttribute('href').replace('mailto:', '')
+    }));
+});
+
 if (contactForm) {
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -94,6 +114,10 @@ contactForm.addEventListener('submit', function(e) {
         headers: { 'Accept': 'application/json' }
     }).then(response => {
         if (response.ok) {
+            trackEvent('Contact Form Submit', {
+                page: window.location.pathname || '/',
+                service: String(formData.get('service') || 'not_selected')
+            });
             btn.textContent = 'Message Sent!';
             btn.style.background = '#10B981';
             if (status) {

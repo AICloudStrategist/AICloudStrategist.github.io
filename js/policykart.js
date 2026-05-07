@@ -5,6 +5,11 @@ const scoreValue = document.getElementById('scoreValue');
 const gapList = document.getElementById('gapList');
 const submitStatus = document.getElementById('submitStatus');
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnqeyqkz';
+function trackPolicyKartEvent(name, props = {}) {
+  if (window.plausible) {
+    window.plausible(name, { props });
+  }
+}
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -41,6 +46,11 @@ form.addEventListener('submit', async (event) => {
 
   if (!submitStatus) return;
 
+  trackPolicyKartEvent('PolicyKart Result Calculated', {
+    band: result,
+    score: String(score)
+  });
+
   submitStatus.className = 'form-status';
   if (!email && !website) {
     submitStatus.textContent = 'Result calculated locally. Add a business email or website if you want us to follow up.';
@@ -68,6 +78,10 @@ form.addEventListener('submit', async (event) => {
 
     if (!response.ok) throw new Error('PolicyKart submission failed');
 
+    trackPolicyKartEvent('PolicyKart Form Submit', {
+      band: result,
+      score: String(score)
+    });
     submitStatus.textContent = 'Assessment saved. We will use these details only to respond to this request.';
     submitStatus.classList.add('success');
   } catch (error) {
