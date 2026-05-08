@@ -1,0 +1,21 @@
+window.AICLOUD_VAPI_CONFIG = {
+    enabled: false,
+    publicKey: 'replace-with-vapi-public-key',
+    assistantId: 'replace-with-vapi-assistant-id',
+    mode: 'chat',
+    theme: 'dark',
+    size: 'compact',
+    position: 'bottom-right',
+    radius: 'large',
+    baseColor: '#071827',
+    accentColor: '#2de2c5',
+    buttonBaseColor: '#071827',
+    buttonAccentColor: '#ffffff',
+    mainLabel: 'Talk with AICloudStrategist',
+    startButtonText: 'Start Voice Chat',
+    endButtonText: 'End Call',
+    emptyChatMessage: 'Hi. Ask about DPDP readiness, PolicyKart, or booking a scoping call.',
+    emptyVoiceMessage: 'Start a voice conversation with AICloudStrategist.',
+    requireConsent: true,
+    showTranscript: true
+};

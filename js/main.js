@@ -184,3 +184,94 @@ const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
     heroObserver.observe(heroStats);
 }
+
+// Optional Vapi widget bootstrap
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+function mountVapiWidget(config) {
+    if (!config || !config.enabled || !config.publicKey || !config.assistantId) {
+        return;
+    }
+
+    if (document.querySelector('vapi-widget')) {
+        return;
+    }
+
+    const widget = document.createElement('vapi-widget');
+    widget.setAttribute('public-key', config.publicKey);
+    widget.setAttribute('assistant-id', config.assistantId);
+    widget.setAttribute('mode', config.mode || 'chat');
+    widget.setAttribute('theme', config.theme || 'dark');
+    widget.setAttribute('size', config.size || 'compact');
+    widget.setAttribute('position', config.position || 'bottom-right');
+    widget.setAttribute('radius', config.radius || 'large');
+    widget.setAttribute('base-color', config.baseColor || '#071827');
+    widget.setAttribute('accent-color', config.accentColor || '#2de2c5');
+    widget.setAttribute('button-base-color', config.buttonBaseColor || '#071827');
+    widget.setAttribute('button-accent-color', config.buttonAccentColor || '#ffffff');
+    widget.setAttribute('main-label', config.mainLabel || 'Talk with AICloudStrategist');
+    widget.setAttribute('start-button-text', config.startButtonText || 'Start Voice Chat');
+    widget.setAttribute('end-button-text', config.endButtonText || 'End Call');
+    widget.setAttribute('empty-chat-message', config.emptyChatMessage || 'Hi. Ask about DPDP readiness, PolicyKart, or booking a scoping call.');
+    widget.setAttribute('empty-voice-message', config.emptyVoiceMessage || 'Start a voice conversation with AICloudStrategist.');
+
+    if (config.requireConsent) {
+        widget.setAttribute('require-consent', 'true');
+    }
+
+    if (config.showTranscript === false) {
+        widget.setAttribute('show-transcript', 'false');
+    }
+
+    document.body.appendChild(widget);
+
+    widget.addEventListener('call-start', () => trackEvent('Vapi Call Start', {
+        page: window.location.pathname || '/',
+        mode: config.mode || 'chat'
+    }));
+
+    widget.addEventListener('call-end', () => trackEvent('Vapi Call End', {
+        page: window.location.pathname || '/',
+        mode: config.mode || 'chat'
+    }));
+
+    widget.addEventListener('message', () => trackEvent('Vapi Message', {
+        page: window.location.pathname || '/',
+        mode: config.mode || 'chat'
+    }));
+
+    widget.addEventListener('error', () => trackEvent('Vapi Error', {
+        page: window.location.pathname || '/',
+        mode: config.mode || 'chat'
+    }));
+}
+
+async function bootstrapVapiWidget() {
+    try {
+        await loadScript('/js/vapi-config.js');
+    } catch (error) {
+        return;
+    }
+
+    if (!window.AICLOUD_VAPI_CONFIG || !window.AICLOUD_VAPI_CONFIG.enabled) {
+        return;
+    }
+
+    try {
+        await loadScript('https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js');
+        mountVapiWidget(window.AICLOUD_VAPI_CONFIG);
+    } catch (error) {
+        console.error('Vapi widget failed to load.', error);
+    }
+}
+
+bootstrapVapiWidget();
