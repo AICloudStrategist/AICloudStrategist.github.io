@@ -11,4 +11,11 @@
 /finops /resources 301!
 /finops/* /resources 301!
 /papers/state-of-cloud-cost-india-2026.pdf /resources 301!
+/website-development-for-small-business-india /website-lead-capture-sprint 301!
+/website-design-for-factory-india /website-lead-capture-sprint 301!
+/lead-capture-website-india /website-lead-capture-sprint 301!
+/business-automation-for-small-business-india /operations-automation-sprint 301!
+/whatsapp-lead-follow-up-automation /operations-automation-sprint 301!
+/website-compliance-india /dpdp-website-compliance-sprint 301!
+/dpdp-website-compliance /dpdp-website-compliance-sprint 301!
 https://www.aicloudstrategist.com/* https://aicloudstrategist.com/:splat 301!
