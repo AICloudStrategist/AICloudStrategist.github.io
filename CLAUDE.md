@@ -69,6 +69,17 @@ Target customers: factories, workshops, traders, local service firms, digital st
 ├── resources.html                      # Free resource hub
 ├── privacy.html                        # Privacy policy
 ├── dpdp-readiness-assessment.html      # Assessment tool
+├── dpdp-compliance-checklist-india.html
+├── dpdp-vendor-register-template.html
+├── dpdp-consent-flow-checklist.html
+├── dpdp-breach-readiness-checklist.html
+├── local-business-website-india.html
+├── factory-website-development-india.html
+├── small-business-automation-india.html
+├── whatsapp-lead-management-india.html
+├── smb-website-checklist-india.html
+├── lead-follow-up-checklist-india.html
+├── policykart.html
 ├── sitemap.xml
 ├── robots.txt
 ├── _redirects                          # Cloudflare/Netlify 301 redirects
@@ -96,14 +107,15 @@ Target customers: factories, workshops, traders, local service firms, digital st
   - Pricing section with Starter/Standard comparison grid
   - About link in nav and footer
 - **Updated** `sitemap.xml` — added /about
-- All changes merged to main and deployed via Cloudflare Pages
+- **Created** `CLAUDE.md` — this file
+- All changes deployed to main via Cloudflare Pages
 
 ---
 
 ## Pending Tasks
 
-- [ ] **Cloudflare cache purge** — go to Cloudflare dashboard → Caching → Purge Everything (one-time after today's deploy)
-- [ ] **Formsubmit.co activation** — first form submission sends a verification email to contact@aicloudstrategist.com — click the link to activate
+- [ ] **Cloudflare cache purge** — Cloudflare dashboard → Caching → Purge Everything
+- [ ] **Formsubmit.co activation** — submit the contact form once; click verification email sent to contact@aicloudstrategist.com
 - [ ] **DPIIT badge image** — currently text only; add official Startup India badge image when available
 - [ ] **LinkedIn presence** — create company LinkedIn page, connect both directors
 - [ ] **First customers** — offer 1-2 free/discounted projects for case studies and social proof
@@ -115,7 +127,7 @@ Target customers: factories, workshops, traders, local service firms, digital st
 ## Key Decisions Made
 
 - **Formspree dropped** — free tier has no auto-reply; switched to Formsubmit.co (free, auto-reply included)
-- **No Formspree paid plan** — not justified at zero-customer stage
+- **No Formspree paid plan** — INR ~850/month not justified at zero-customer stage
 - **Two pricing tiers** — Starter and Standard per sprint, explicit deliverables, no vague "from" pricing
 - **DPIIT badge** — text only for now; real badge image to be added later
 - **Google Workspace** — kept on free tier only; O365 is primary email
