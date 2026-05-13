@@ -15,7 +15,7 @@
 **Contact:**
 - Email: contact@aicloudstrategist.com
 - Support: support@aicloudstrategist.com
-- WhatsApp Business: +91 7838347711
+- Public phone/WhatsApp: do not publish a personal number; use approved hotline/virtual number only once provisioned
 
 ---
 
@@ -98,7 +98,7 @@ Target customers: factories, workshops, traders, local service firms, digital st
 - **Created** `thank-you.html` — post-form confirmation with "what happens next" steps
 - **Updated** `index.html`:
   - 2-tier pricing cards (Starter + Standard) for all 3 sprints
-  - WhatsApp contact button (green, wa.me/917838347711)
+  - Contact CTA must not expose personal numbers; use enquiry form/email until hotline/virtual WhatsApp is provisioned
   - DPIIT Recognised Startup in hero proof strip (4th item)
   - About link added to nav and footer
   - Formsubmit.co replaces Formspree (free auto-reply)
